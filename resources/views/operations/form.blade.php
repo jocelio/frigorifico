@@ -2,10 +2,6 @@
 
 @section('content')
 <div class="container">
-    <script>
-    console.log($)
-        // $('.data').datepicker();
-    </script>
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
@@ -29,7 +25,7 @@
                         <div class="row">
                             <div class="col">
                                 {!! Form::label('client', 'Cliente') !!}
-                                {!! Form::select('client_id', $clientes, null, ['class' => 'form-control','autofocus']) !!}
+                                {!! Form::select('client_id', $clientes, null, ['class' => 'form-control select2','autofocus']) !!}
                             </div>
                             <div class="col">
                                 {!! Form::label('type', 'Operação') !!}
@@ -39,11 +35,11 @@
                         <div class="row">
                             <div class="col">
                                 {!! Form::label('data', 'Data') !!}
-                                {!! Form::input('text', 'data', null, ['class' => 'form-control'])  !!}
+                                {!! Form::input('text', 'data', null, ['class' => 'form-control datepicker'])  !!}
                             </div>
                             <div class="col">
-                                {!! Form::label('type', 'Operação') !!}
-                                {!! Form::select('type', $types, null, ['class' => 'form-control']) !!}
+                                {!! Form::label('value', 'Endereço') !!}
+                                {!! Form::input('text', 'value', null, ['class' => 'form-control money ', 'placeholder' => 'Valor'])  !!}
                             </div>
                         </div>
 

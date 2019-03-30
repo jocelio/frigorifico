@@ -11,6 +11,12 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
+    require('jquery-ui/ui/widgets/datepicker.js');
+
+    require('jquery-mask-plugin');
+
+    require('select2');
+
     require('bootstrap');
 } catch (e) {}
 

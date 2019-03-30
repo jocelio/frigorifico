@@ -31,3 +31,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app'
 });
+
+
+
+$(document).ready(function(){
+    $('.datepicker').datepicker();
+    $('.money').mask('000.000.000.000.000,00', {reverse: true});
+    $('.select2').select2();
+});
