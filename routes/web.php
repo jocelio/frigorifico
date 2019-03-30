@@ -19,13 +19,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', 'OperationController@index');
+
+    //client
     Route::get('/clientes', 'ClientsController@index');
     Route::get('/clientes/novo', 'ClientsController@form');
     Route::post('/clientes/insert', 'ClientsController@insert');
     Route::get('/clientes/{cliente}/editar', 'ClientsController@edit');
     Route::patch('/clientes/{cliente}', 'ClientsController@update');
     Route::delete('/clientes/{cliente}', 'ClientsController@delete');
+
+    //operations
+    Route::get('/home', 'OperationController@index');
+    Route::post('/operation/insert', 'OperationController@insert');
+
 });
 
 

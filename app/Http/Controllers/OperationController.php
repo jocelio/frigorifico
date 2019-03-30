@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use App\Operation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Redirect;
 
 class OperationController extends Controller
 {
 
-    protected $operationsType = ['VENDA','PAGAMENTO'];
+    protected $operationsType = [0=>'VENDA',1=>'PAGAMENTO'];
 
     /**
      * Create a new controller instance.
@@ -34,12 +36,14 @@ class OperationController extends Controller
 
     public function insert(Request $request){
 
-        $cliente = new Client();
+        $operation = new Operation();
 
-        $cliente->create($request->all());
+        $fields = $request->all();
+        $fields['user_id'] = Auth::user()->id;
+        $operation->create($fields);
 
-        \Session::flash('seccess_message', 'Client cadastrado com sucesso.');
-        return Redirect::to('clientes/novo');
+        \Session::flash('seccess_message', 'Operação inserida com sucesso.');
+        return Redirect::to('/home');
     }
 
 }

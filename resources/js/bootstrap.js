@@ -18,6 +18,9 @@ try {
     require('select2');
 
     require('bootstrap');
+
+    require( 'datatables.net')
+
 } catch (e) {}
 
 /**

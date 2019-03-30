@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Client;
+use function foo\func;
 use Illuminate\Http\Request;
 use Redirect;
 
 class ClientsController extends Controller
 {
     public function index(){
-      $clientes = Client::get();
-      return view('clients/list', ['clientes' => $clientes]);
+      $clients = Client::with('operations')->get();
+      return view('clients/list', ['clientes' => $clients]);
     }
 
     public function form(){

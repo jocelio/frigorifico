@@ -25,6 +25,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "datatables.net": "^1.10.19",
+        "datatables.net-dt": "^1.10.19",
         "jquery-mask-plugin": "^1.14.15",
         "select2": "^4.0.6-rc.1"
     }

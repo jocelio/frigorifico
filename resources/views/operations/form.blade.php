@@ -34,17 +34,14 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                {!! Form::label('data', 'Data') !!}
-                                {!! Form::input('text', 'data', null, ['class' => 'form-control datepicker'])  !!}
+                                {!! Form::label('date', 'Data') !!}
+                                {!! Form::input('text', 'date', null, ['class' => 'form-control datepicker'])  !!}
                             </div>
                             <div class="col">
                                 {!! Form::label('value', 'Endereço') !!}
                                 {!! Form::input('text', 'value', null, ['class' => 'form-control money ', 'placeholder' => 'Valor'])  !!}
                             </div>
                         </div>
-
-
-
 
                         <div class="row">
                             <div class="col">
