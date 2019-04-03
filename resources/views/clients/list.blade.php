@@ -29,7 +29,6 @@
                             <th>Nome</th>
                             <th>CPF</th>
                             <th>Telefone</th>
-                            <th>Endereço</th>
                             <th>Última Compra</th>
                             <th>Saldo</th>
                             <th>Ações</th>
@@ -41,15 +40,9 @@
                             <td>{{$cliente->nome}}</td>
                             <td>{{$cliente->cpf}}</td>
                             <td>{{$cliente->telefone}}</td>
-                            <td>{{$cliente->endereco}}</td>
                             <td>{{$cliente->getLastPurchase()}}</td>
-                            <td style="width: 200px;" data-order="{{$cliente->getBalance()}}">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupPrepend">R$</span>
-                                    </div>
-                                    <input type="text" value="{{$cliente->getBalance()}}" class="form-control" disabled>
-                                </div>
+                            <td data-order="{{$cliente->getBalance()}}">
+                                R$ <span class="{{$cliente->getBalance() >= 0? 'text-success':'text-danger'}}"> {{$cliente->getBalance()}} </span>
                             </td>
                             <td class="btn-group">
                                 <a href="/clientes/{{$cliente->id}}/editar" class="btn btn-outline-info">Editar</a>

@@ -35,7 +35,7 @@
                         <div class="row">
                             <div class="col">
                                 {!! Form::label('date', 'Data') !!}
-                                {!! Form::input('text', 'date', null, ['class' => 'form-control datepicker'])  !!}
+                                {!! Form::input('text', 'date', \Carbon\Carbon::now()->format('d/m/Y'), ['class' => 'form-control datepicker'])  !!}
                             </div>
                             <div class="col">
                                 {!! Form::label('value', 'Endereço') !!}
@@ -44,7 +44,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col">
+                            <div class="col mt-4">
                                 {!! Form::submit('Enviar', ['class' => 'btn btn-primary']) !!}
                             </div>
                         </div>

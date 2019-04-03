@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Frigorífico</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -61,6 +61,14 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .i{
+                margin-top: -12px;
+                font-size: 60px;
+            }
+            .facebook{
+                color: #3B5998;
+                font-weight: bold;
+            }
         </style>
     </head>
     <body>
@@ -81,17 +89,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Fr<span class="i">!</span>gor<span class="i">!</span>f<span class="i">!</span>co
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://www.facebook.com/jocelioDev">Desenvolvido por <span class="facebook">Jocélio Lima</span> </a>
                 </div>
             </div>
         </div>
