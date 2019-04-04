@@ -45,7 +45,7 @@ class ClientsController extends Controller
         return Redirect::to('clientes');
     }
 
-    public function delete($id, Request $request){
+    public function delete($id){
 
         $cliente = Client::findOrFail($id);
 

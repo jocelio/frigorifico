@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
                     <div class="row">
@@ -19,7 +19,6 @@
                             {{ session('seccess_message') }}
                         </div>
                     @endif
-
 
                     {!! Form::open(['url' => 'operation/insert']) !!}
                         <div class="row">
@@ -53,6 +52,28 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">
+                            Alertas
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @foreach($clientsAlert as $clienteAlert)
+                        <div class="alert alert-danger" role="alert">
+                            <a href="operation/{{$clienteAlert->id}}/historico" class="alert-link">
+                                {{$clienteAlert->getLastPurchaseInDays()}} {{$clienteAlert->nome}} R$ {{$clienteAlert->getFormattedBalance()}}
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 @endsection

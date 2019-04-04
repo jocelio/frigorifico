@@ -23,9 +23,10 @@
                         </div>
                     @endif
 
-                    <table class="table datatable">
+                    <table class="table datatable table-striped">
                         <thead>
                         <tr>
+                            <th>Histórico</th>
                             <th>Nome</th>
                             <th>CPF</th>
                             <th>Telefone</th>
@@ -37,17 +38,22 @@
                         <tbody>
                         @foreach($clientes as $cliente)
                         <tr>
+                            <td><a href="/operation/{{$cliente->id}}/historico" class="btn btn-outline-secondary">Operações</a></td>
                             <td>{{$cliente->nome}}</td>
                             <td>{{$cliente->cpf}}</td>
                             <td>{{$cliente->telefone}}</td>
                             <td>{{$cliente->getLastPurchase()}}</td>
                             <td data-order="{{$cliente->getBalance()}}">
-                                R$ <span class="{{$cliente->getBalance() >= 0? 'text-success':'text-danger'}}"> {{$cliente->getBalance()}} </span>
+                                <span class="{{$cliente->getBalance() >= 0? 'text-success':'text-danger'}}">
+                                    <strong class="font-weight-bold">R$ </strong>
+                                    {{$cliente->getFormattedBalance()}}
+                                </span>
                             </td>
                             <td class="btn-group">
                                 <a href="/clientes/{{$cliente->id}}/editar" class="btn btn-outline-info">Editar</a>
                                 {!! Form::model($cliente, ['method'=>'DELETE', 'url'=> 'clientes/'.$cliente->id]) !!}
-                                <button type="submit" onClick="return confirmDeletion()" href="/clientes/{{$cliente->id}}/excluir" class="btn btn-outline-danger">Excluir</button>
+                                <button type="submit" onClick="return confirmDeletion()"
+                                        href="/clientes/{{$cliente->id}}/excluir" class="btn btn-outline-danger">Excluir</button>
                                 {!! Form::close() !!}
                             </td>
                         </tr>

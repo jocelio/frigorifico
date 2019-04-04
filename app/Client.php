@@ -15,9 +15,7 @@ class Client extends Model
         return $this->hasMany('App\Operation');
     }
 
-
     public function getBalance(){
-
         $operations = collect($this->operations);
 
         $sells = $operations->filter(function ($operation) {
@@ -29,7 +27,21 @@ class Client extends Model
         })->sum('value');
 
         return $payments - $sells;
+    }
 
+    public function getAccOperations(){
+        $operations = collect($this->operations);
+
+        $acc = $operations->reduce(function ($carry, $operation) {
+            $operation['acc'] = $operation->type == 0? $operation->value + $carry : $carry - $operation->value;
+            return $operation->type == 0? $operation->value + $carry : $carry - $operation->value;
+        },0);
+
+        return $operations;
+    }
+
+    public function getFormattedBalance(){
+        return number_format($this->getBalance(), 2, ',', '.');
     }
 
     public function getLastPurchase(){
@@ -38,6 +50,15 @@ class Client extends Model
             return $operation->type == '0';
         })->sortBy('date')->map(function ($operation) {
             return $operation->getFormattedDate();
+        })->first();
+    }
+
+    public function getLastPurchaseInDays(){
+        $operations = collect($this->operations);
+        return $operations->filter(function ($operation) {
+            return $operation->type == '0';
+        })->sortBy('date')->map(function ($operation) {
+            return $operation->getElapsedDays();
         })->first();
     }
 }

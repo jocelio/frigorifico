@@ -31,4 +31,19 @@ class Operation extends Model
     {
         return Carbon::parse($this->date)->format('d/m/Y');
     }
+
+    public function getFormattedValue()
+    {
+        return number_format($this->value, 2, ',', '.');
+    }
+
+    public function getFormattedAcc()
+    {
+        return number_format($this->acc, 2, ',', '.');
+    }
+
+    public function getElapsedDays()
+    {
+        return Carbon::parse($this->date)->diffInDays(Carbon::now());
+    }
 }
