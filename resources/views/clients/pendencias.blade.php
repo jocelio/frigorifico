@@ -8,10 +8,10 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col">
-                        Lista de Clientes
+                        Lista de Pendências
                         </div>
                         <div class="col pull-right">
-                            <a href="{{url('clientes/novo')}}" class="float-right"> Novo </a>
+                            <a href="{{url('clientes/')}}" class="float-right"> Lista De Clientes </a>
                         </div>
                     </div>
                 </div>
@@ -32,31 +32,23 @@
                             <th>Telefone</th>
                             <th>Última Compra</th>
                             <th>Saldo</th>
-                            <th>Ações</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($clientes as $cliente)
-                        <tr>
-                            <td><a href="/operation/{{$cliente->id}}/historico" class="btn btn-outline-secondary">Ver Histórico</a></td>
-                            <td>{{$cliente->nome}}</td>
-                            <td>{{$cliente->cpf}}</td>
-                            <td>{{$cliente->telefone}}</td>
-                            <td>{{$cliente->getLastPurchase()}}</td>
-                            <td data-order="{{$cliente->getBalance()}}">
+                        @foreach($clientsAlert as $cliente)
+                            <tr>
+                                <td><a href="/operation/{{$cliente->id}}/historico" class="btn btn-outline-secondary">Operações</a></td>
+                                <td>{{$cliente->nome}}</td>
+                                <td>{{$cliente->cpf}}</td>
+                                <td>{{$cliente->telefone}}</td>
+                                <td>{{$cliente->getLastPurchase()}}</td>
+                                <td data-order="{{$cliente->getBalance()}}">
                                 <span class="{{$cliente->getBalance() >= 0? 'text-success':'text-danger'}}">
                                     <strong class="font-weight-bold">R$ </strong>
                                     {{$cliente->getFormattedBalance()}}
                                 </span>
-                            </td>
-                            <td class="btn-group">
-                                <a href="/clientes/{{$cliente->id}}/editar" class="btn btn-outline-info">Editar</a>
-                                {!! Form::model($cliente, ['method'=>'DELETE', 'url'=> 'clientes/'.$cliente->id]) !!}
-                                <button type="submit" onClick="return confirmDeletion()"
-                                        href="/clientes/{{$cliente->id}}/excluir" class="btn btn-outline-danger">Excluir</button>
-                                {!! Form::close() !!}
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>

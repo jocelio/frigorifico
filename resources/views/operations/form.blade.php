@@ -63,13 +63,16 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    @foreach($clientsAlert as $clienteAlert)
-                        <div class="alert alert-danger" role="alert">
-                            <a href="operation/{{$clienteAlert->id}}/historico" class="alert-link">
-                                {{$clienteAlert->getLastPurchaseInDays()}} {{$clienteAlert->nome}} R$ {{$clienteAlert->getFormattedBalance()}}
-                            </a>
-                        </div>
-                    @endforeach
+                    <div class="alert alert-danger" role="alert">
+                        <a href="operation/pendencias" class="alert-link">
+                            Você tem {!! $clientsAlert !!}
+                            @if ($clientsAlert > 1)
+                              pendências.
+                            @else
+                              pendência.
+                            @endif
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

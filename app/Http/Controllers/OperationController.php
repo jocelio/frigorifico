@@ -7,6 +7,8 @@ use App\Operation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
+use Mike42\Escpos\PrintConnectors\CupsPrintConnector;
+use Mike42\Escpos\Printer;
 
 class OperationController extends Controller
 {
@@ -31,6 +33,31 @@ class OperationController extends Controller
      */
     public function index()
     {
+//        $connector = new CupsPrintConnector("EPSON_TM_T20");
+//        $printer = new Printer($connector);
+//        $i=0;
+//        $printer -> setTextSize(8, 8);
+//        while ($i < 10){
+//            $printer -> text("Wostin\n");
+//            $i++;
+//        }
+//        $printer -> cut();
+//        $printer -> close();
+//        die;
+        $clientesAlerts = $clients = Client::with('operations')->get();
+
+        //calculate last payment as filter
+        $alerts = collect($clientesAlerts)->filter(function ($client) {
+            return $client->getBalance() < 0 && $client->getLastPurchaseInDays() > $this->daysForAlert;
+        })->count();
+
+        $clientes = Client::pluck('nome', 'id');
+        return view('operations/form', ['clientes'=> $clientes, 'types'=> $this->operationsType, 'clientsAlert' => $alerts]);
+    }
+
+    public function pendencias()
+    {
+
         $clientesAlerts = $clients = Client::with('operations')->get();
 
         //calculate last payment as filter
@@ -39,7 +66,7 @@ class OperationController extends Controller
         });
 
         $clientes = Client::pluck('nome', 'id');
-        return view('operations/form', ['clientes'=> $clientes, 'types'=> $this->operationsType, 'clientsAlert' => $alerts]);
+        return view('clients/pendencias', ['clientes'=> $clientes, 'types'=> $this->operationsType, 'clientsAlert' => $alerts]);
     }
 
     public function insert(Request $request){
