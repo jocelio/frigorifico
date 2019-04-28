@@ -33,7 +33,7 @@ const app = new Vue({
 });
 
 $(document).ready(function(){
-    $('.datepicker').datepicker();
+    $('.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
     $('.money').mask('000.000.000.000.000,00', {reverse: true});
     $('.cpf').mask('000.000.000-00');
     $('.select2').select2();

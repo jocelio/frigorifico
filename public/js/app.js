@@ -72986,7 +72986,9 @@ var app = new Vue({
   el: '#app'
 });
 $(document).ready(function () {
-  $('.datepicker').datepicker();
+  $('.datepicker').datepicker({
+    dateFormat: 'dd/mm/yy'
+  });
   $('.money').mask('000.000.000.000.000,00', {
     reverse: true
   });

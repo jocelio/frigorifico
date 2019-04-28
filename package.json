@@ -27,6 +27,7 @@
     "dependencies": {
         "datatables.net": "^1.10.19",
         "datatables.net-dt": "^1.10.19",
+        "font-awesome": "^4.7.0",
         "jquery-mask-plugin": "^1.14.15",
         "select2": "^4.0.6-rc.1"
     }

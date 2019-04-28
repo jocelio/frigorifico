@@ -11,7 +11,7 @@
                         Histórico do Cliente: {{$cliente->nome}} {{$cliente->cpf}}
                         </div>
                         <div class="col pull-right">
-                            <a href="{{url('clientes/novo')}}" class="float-right"> Imprimir </a>
+                            <a href="/operation/{{$cliente->id}}/print" class="float-right"> Imprimir </a>
                         </div>
                     </div>
                 </div>

@@ -38,7 +38,14 @@
                             </div>
                             <div class="col">
                                 {!! Form::label('value', 'Endereço') !!}
-                                {!! Form::input('text', 'value', null, ['class' => 'form-control money ', 'placeholder' => 'Valor'])  !!}
+                                {!! Form::input('text', 'value', null, ['class' => 'form-control money', 'required'=>'true', 'placeholder' => 'Valor'])  !!}
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col">
+                                {!! Form::label('print', 'Imprimir') !!}
+                                {!! Form::checkbox('print', true, true) !!}
                             </div>
                         </div>
 

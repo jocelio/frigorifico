@@ -15,6 +15,10 @@ class OperationController extends Controller
 
     protected $operationsType = [0=>'VENDA',1=>'PAGAMENTO'];
     protected $daysForAlert = 30;
+    protected $printerName = 'EPSON_TM_T20';
+    protected $printer;
+
+
 
     /**
      * Create a new controller instance.
@@ -24,6 +28,8 @@ class OperationController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $connector = new CupsPrintConnector($this->printerName);
+        $this->printer = new Printer($connector);
     }
 
     /**
@@ -33,17 +39,7 @@ class OperationController extends Controller
      */
     public function index()
     {
-//        $connector = new CupsPrintConnector("EPSON_TM_T20");
-//        $printer = new Printer($connector);
-//        $i=0;
-//        $printer -> setTextSize(8, 8);
-//        while ($i < 10){
-//            $printer -> text("Wostin\n");
-//            $i++;
-//        }
-//        $printer -> cut();
-//        $printer -> close();
-//        die;
+
         $clientesAlerts = $clients = Client::with('operations')->get();
 
         //calculate last payment as filter
@@ -69,13 +65,36 @@ class OperationController extends Controller
         return view('clients/pendencias', ['clientes'=> $clientes, 'types'=> $this->operationsType, 'clientsAlert' => $alerts]);
     }
 
+    public function printHistory($id){
+
+        $cliente = Client::findOrFail($id);
+
+        $cliente->printHistory($this->printer);
+
+        return Redirect::to('/operation/'.$id.'/historico');
+    }
+
+    public function printTest(){
+
+        $cliente = new Client();
+
+        $cliente->printTest($this->printer, $this->printerName);
+
+        return Redirect::back();
+    }
+
     public function insert(Request $request){
 
         $operation = new Operation();
 
         $fields = $request->all();
         $fields['user_id'] = Auth::user()->id;
-        $operation->create($fields);
+        $newOperation = $operation->create($fields);
+
+        if($request->has('print')){
+            $cliente = Client::findOrFail($fields['client_id']);
+            $cliente->printOperation($this->printer, $newOperation);
+        }
 
         \Session::flash('seccess_message', 'Operação inserida com sucesso.');
         return Redirect::to('/home');

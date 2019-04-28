@@ -24,7 +24,7 @@ class Operation extends Model
 
     public function setDateAttribute($value)
     {
-        $this->attributes['date'] = Carbon::createFromDate($value);
+        $this->attributes['date'] = Carbon::createFromFormat('d/m/Y', $value);
     }
 
     public function getFormattedDate()
