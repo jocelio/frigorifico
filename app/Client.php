@@ -100,15 +100,19 @@ class Client extends Model
 
         $separator = " - ";
 
+        $printer->text("VALOR  - TIPO -    DATA    - SALDO   -  INFO\n");
+
         collect($this->getAccOperations())->each(function ($operation) use ($printer, $separator) {
-            $printer->text(str_pad($operation->getFormattedValue(), 7));
+            $printer->text(str_pad($operation->getFormattedValue(), 6));
             $printer->text($separator);
-            $printer->text(str_pad($operation->type == 0? 'COMPRA':'PAGAMENTO', 9));
+            $printer->text($operation->type == 0? 'COMP':'PGTO');
+            $printer->text($separator);
+            $printer->text(str_pad($operation->getFormattedDate(),7));
             $printer->text($separator);
             $printer->text(str_pad($operation->getFormattedAcc(),7));
             $printer->text($separator);
-            if($operation->acc == 0) $printer->text("FECHAMENTO");
-            if($operation->acc < 0) $printer->text("S. POSITIVO");
+            if($operation->acc == 0) $printer->text("QUITAÇÃO");
+            if($operation->acc < 0) $printer->text("POSITIVO");
             $printer->text("\n");
         });
 
