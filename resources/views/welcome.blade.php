@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Frigorífico</title>
+        <title>Wostin das Carnes</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -89,7 +89,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Fr<span class="i">!</span>gor<span class="i">!</span>f<span class="i">!</span>co
+                    Wostin das Carnes
                 </div>
 
                 <div class="links">

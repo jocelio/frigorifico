@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use App\Operation;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
@@ -104,6 +105,19 @@ class OperationController extends Controller
         $cliente = Client::findOrFail($id);
 
         return view('operations/list', ['cliente' => $cliente]);
+    }
+
+    public function all(Request $request)
+    {
+        if ($request->input('date')){
+            $date = Carbon::createFromFormat('!d/m/Y', $request->input('date'))->toDateString();
+            $operations = Operation::where('date', $date)->with('client')->get();
+        }else{
+            $operations = Operation::with('client')->get();
+        }
+        $groupedOperations = collect($operations)->sortBy('date')->groupBy('date');
+
+        return view('operations/list_all', ['groupedOperations' => $groupedOperations]);
     }
 
 }

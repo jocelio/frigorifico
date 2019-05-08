@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'OperationController@index');
     Route::post('/operation/insert', 'OperationController@insert');
     Route::get('/operation/{cliente}/historico', 'OperationController@history');
+    Route::get('/operation/all', 'OperationController@all');
     Route::get('/operation/pendencias', 'OperationController@pendencias');
     Route::get('/operation/{cliente}/print', 'OperationController@printHistory');
     Route::get('/operation/test-print', 'OperationController@printTest');
