@@ -31,13 +31,13 @@
                                 {!! Form::select('type', $types, null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row mt-2">
                             <div class="col">
                                 {!! Form::label('date', 'Data') !!}
                                 {!! Form::input('text', 'date', \Carbon\Carbon::now()->format('d/m/Y'), ['class' => 'form-control datepicker'])  !!}
                             </div>
                             <div class="col">
-                                {!! Form::label('value', 'Endereço') !!}
+                                {!! Form::label('value', 'Valor') !!}
                                 {!! Form::input('text', 'value', null, ['class' => 'form-control money', 'required'=>'true', 'placeholder' => 'Valor'])  !!}
                             </div>
                         </div>

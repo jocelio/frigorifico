@@ -82,7 +82,7 @@ class Client extends Model
         $printer->text("Wostin das Carnes");
         $printer -> setTextSize(1, 1);
         $printer->text("\n");
-        $printer->text("(85) 988387818 - 07.373.434/0001-86");
+        $printer->text("(85) 988387818 - (85) 987621156");
         $printer->text("\n");
         $printer->text(Carbon::now()->format('d/m/Y H:i:s'));
         $printer->text("\n");

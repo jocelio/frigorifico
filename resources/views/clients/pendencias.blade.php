@@ -37,7 +37,7 @@
                         <tbody>
                         @foreach($clientsAlert as $cliente)
                             <tr>
-                                <td><a href="/operation/{{$cliente->id}}/historico" class="btn btn-outline-secondary">Operações</a></td>
+                                <td><a href="/operation/{{$cliente->id}}/historico" class="btn btn-outline-secondary">Ver Histórico</a></td>
                                 <td>{{$cliente->nome}}</td>
                                 <td>{{$cliente->cpf}}</td>
                                 <td>{{$cliente->telefone}}</td>

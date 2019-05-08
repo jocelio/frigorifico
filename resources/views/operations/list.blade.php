@@ -31,6 +31,7 @@
                             <th>Valor</th>
                             <th>Operação</th>
                             <th>Resto</th>
+                            <th>Impressão</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -41,6 +42,7 @@
                             <td>R$ {{$operation->getFormattedValue()}}</td>
                             <td>{{$operation->type == 0? 'VENDA':'PAGAMENTO'}}</td>
                             <td>R$ {{$operation->getFormattedAcc()}}</td>
+                            <td> Imprimir </td>
                         </tr>
                         @endforeach
                         </tbody>
