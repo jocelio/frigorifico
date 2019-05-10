@@ -32,6 +32,11 @@ class Operation extends Model
         return Carbon::parse($this->date)->format('d/m/Y');
     }
 
+    public function getFormattedTime()
+    {
+        return Carbon::parse($this->created_at)->format('H:i:s');
+    }
+
     public function getFormattedValue()
     {
         return number_format($this->value, 2, ',', '.');

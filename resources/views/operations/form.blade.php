@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col">
                                 {!! Form::label('client', 'Cliente') !!}
-                                {!! Form::select('client_id', $clientes, null, ['class' => 'form-control select2','autofocus']) !!}
+                                {!! Form::select('client_id', $clientes, null, ['class' => 'form-control select2','autofocus', 'placeholder' => 'Selecione o Cliente']) !!}
                             </div>
                             <div class="col">
                                 {!! Form::label('type', 'Operação') !!}

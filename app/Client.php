@@ -17,8 +17,12 @@ class Client extends Model
         return $this->hasMany('App\Operation');
     }
 
-    public function getBalance(){
-        $operations = collect($this->operations);
+    public static function calculateFormattedBalance($operationsList){
+        return self::formatMoney(self::calculateBalance($operationsList));
+    }
+
+    public static function calculateBalance($operationsList){
+        $operations = collect($operationsList);
 
         $sells = $operations->filter(function ($operation) {
             return $operation->type == '0';
@@ -29,6 +33,10 @@ class Client extends Model
         })->sum('value');
 
         return $payments - $sells;
+    }
+
+    public function getBalance(){
+        return Client::calculateBalance($this->operations);
     }
 
     public function getAccOperations(){
@@ -42,8 +50,12 @@ class Client extends Model
         return $operations;
     }
 
+    public static function formatMoney($value){
+        return number_format($value, 2, ',', '.');
+    }
+
     public function getFormattedBalance(){
-        return number_format($this->getBalance(), 2, ',', '.');
+        return Client::formatMoney($this->getBalance());
     }
 
     public function getLastPurchase(){
@@ -76,7 +88,7 @@ class Client extends Model
 
     }
 
-    public function printHeader($printer){
+    public static function printHeader($printer){
         $printer -> setTextSize(2, 1);
         $printer ->setJustification(Printer::JUSTIFY_CENTER);
         $printer->text("Wostin das Carnes");
@@ -144,6 +156,46 @@ class Client extends Model
         $printer->text("\n");
         $printer->text("\n");
         $printer->text("*Confira se a data da operação corresponde à \ndata corrente.");
+        $printer->text("\n");
+
+        $printer -> cut();
+        $printer -> close();
+
+    }
+
+    public static function printDay($printer, $operations){
+
+        Client::printHeader($printer);
+
+        $printer ->setJustification(Printer::JUSTIFY_LEFT);
+        $printer ->setColor(Printer::COLOR_2);
+
+        $printer ->setJustification(Printer::JUSTIFY_CENTER);
+        $printer->text("Relatório do dia: ". $operations[0]->getFormattedDate());
+        $printer->text("\n");
+        $printer->text("________________________________________________");
+        $printer->text("\n");
+        $printer ->setJustification(Printer::JUSTIFY_LEFT);
+        $printer -> setTextSize(1, 1);
+
+        $separator = " - ";
+
+        $printer->text("CLIENTE         - HORA     - VALOR   - OPERAÇÃO\n");
+
+        collect($operations)->each(function ($operation) use ($printer, $separator) {
+            $printer->text(str_pad(substr($operation->client->nome, 0,14), 15));
+            $printer->text($separator);
+            $printer->text(str_pad($operation->getFormattedTime(),7));
+            $printer->text($separator);
+            $printer->text(str_pad($operation->getFormattedValue(),7));
+            $printer->text($separator);
+            $printer->text($operation->type == 0? 'COMP':'PGTO');
+            $printer->text("\n");
+        });
+
+        $printer->text("________________________________________________");
+        $printer->text("\n");
+        $printer->text("SALDO TOTAL: ". Client::calculateFormattedBalance($operations));
         $printer->text("\n");
 
         $printer -> cut();

@@ -33,11 +33,11 @@
                         {!! Form::label('nome', 'Nome') !!}
                     	{!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus','required', 'placeholder' => 'Nome'])  !!}
                         {!! Form::label('cpf', 'CPF') !!}
-                    	{!! Form::input('text', 'cpf', null, ['class' => 'form-control cpf', 'placeholder' => 'CPF'])  !!}
+                    	{!! Form::input('text', 'cpf', null, ['class' => 'form-control cpf','required', 'placeholder' => 'CPF'])  !!}
                         {!! Form::label('telefone', 'Telefone') !!}
                     	{!! Form::input('text', 'telefone', null, ['class' => 'form-control', 'required', 'placeholder' => 'Telefone'])  !!}
                         {!! Form::label('endereco', 'Endereço') !!}
-                    	{!! Form::input('text', 'endereco', null, ['class' => 'form-control', 'placeholder' => 'Endereço'])  !!}
+                    	{!! Form::input('text', 'endereco', null, ['class' => 'form-control', 'required', 'placeholder' => 'Endereço'])  !!}
 
                         <div class="row">
                             <div class="col mt-4">

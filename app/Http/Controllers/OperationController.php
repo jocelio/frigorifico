@@ -41,14 +41,18 @@ class OperationController extends Controller
     public function index()
     {
 
-        $clientesAlerts = $clients = Client::with('operations')->get();
+        $clientesAlerts = Client::with('operations')->get();
 
         //calculate last payment as filter
         $alerts = collect($clientesAlerts)->filter(function ($client) {
             return $client->getBalance() < 0 && $client->getLastPurchaseInDays() > $this->daysForAlert;
         })->count();
 
-        $clientes = Client::pluck('nome', 'id');
+        $clientes = collect($clientesAlerts)->sortBy('nome')->mapWithKeys(function ($item) {
+            return [$item['id'] => strtoupper($item['nome'])];
+        });
+
+
         return view('operations/form', ['clientes'=> $clientes, 'types'=> $this->operationsType, 'clientsAlert' => $alerts]);
     }
 
@@ -73,6 +77,15 @@ class OperationController extends Controller
         $cliente->printHistory($this->printer);
 
         return Redirect::to('/operation/'.$id.'/historico');
+    }
+
+    public function printDate($date){
+
+        $operations = Operation::where('date', $date)->with('client')->get();
+
+        Client::printDay($this->printer, $operations);
+
+        return Redirect::back();
     }
 
     public function printTest(){
@@ -109,15 +122,22 @@ class OperationController extends Controller
 
     public function all(Request $request)
     {
-        if ($request->input('date')){
-            $date = Carbon::createFromFormat('!d/m/Y', $request->input('date'))->toDateString();
+        $day = $request->input('date');
+
+        if ($day){
+            $date = Carbon::createFromFormat('d/m/Y', $request->input('date'))->toDateString();
             $operations = Operation::where('date', $date)->with('client')->get();
+            $dayBalance = Client::calculateFormattedBalance($operations);
+
         }else{
             $operations = Operation::with('client')->get();
+            $dayBalance = null;
+            $date = null;
         }
-        $groupedOperations = collect($operations)->sortBy('date')->groupBy('date');
 
-        return view('operations/list_all', ['groupedOperations' => $groupedOperations]);
+        $groupedOperations = collect($operations)->sortByDesc('date')->groupBy('date');
+
+        return view('operations/list_all', ['groupedOperations' => $groupedOperations, 'dayBalance' => $dayBalance, 'date' => $date]);
     }
 
 }
