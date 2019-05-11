@@ -70,13 +70,19 @@ class OperationController extends Controller
         return view('clients/pendencias', ['clientes'=> $clientes, 'types'=> $this->operationsType, 'clientsAlert' => $alerts]);
     }
 
-    public function printHistory($id){
+    public function printHistory($clientId, $operationId = null){
 
-        $cliente = Client::findOrFail($id);
+        if($operationId){
+            $cliente = Client::with(['operations' => function($query) use ($operationId) {
+            $query->where('id', '>=', $operationId);
+        }])->find($clientId);
+        }else{
+            $cliente = Client::findOrFail($clientId);
+        }
 
-        $cliente->printHistory($this->printer);
+        $cliente->printHistory($this->printer, $operationId == null);
 
-        return Redirect::to('/operation/'.$id.'/historico');
+        return Redirect::to('/operation/'.$clientId.'/historico');
     }
 
     public function printDate($date){

@@ -102,7 +102,7 @@ class Client extends Model
         $printer->text("\n");
     }
 
-    public function printHistory($printer){
+    public function printHistory($printer, $printTotal = true){
 
         $this->printHeader($printer);
 
@@ -112,9 +112,11 @@ class Client extends Model
 
         $separator = " - ";
 
-        $printer->text("VALOR  - TIPO -    DATA    - SALDO   -  INFO\n");
+        $printer->text("ID - VALOR  - TIPO -    DATA    - SALDO   - INFO\n");
 
         collect($this->getAccOperations())->each(function ($operation) use ($printer, $separator) {
+            $printer->text(str_pad($operation->id, 2));
+            $printer->text($separator);
             $printer->text(str_pad($operation->getFormattedValue(), 6));
             $printer->text($separator);
             $printer->text($operation->type == 0? 'COMP':'PGTO');
@@ -123,13 +125,15 @@ class Client extends Model
             $printer->text($separator);
             $printer->text(str_pad($operation->getFormattedAcc(),7));
             $printer->text($separator);
-            if($operation->acc == 0) $printer->text("QUITAÇÃO");
-            if($operation->acc < 0) $printer->text("POSITIVO");
+            if($operation->acc == 0) $printer->text("QUIT");
+            if($operation->acc < 0) $printer->text("PSTV");
             $printer->text("\n");
         });
 
-        $printer->text("SALDO TOTAL: ". $this->getBalance());
-        $printer->text("\n");
+        if($printTotal){
+            $printer->text("SALDO TOTAL: ". $this->getBalance());
+            $printer->text("\n");
+        }
 
         $printer -> cut();
         $printer -> close();
