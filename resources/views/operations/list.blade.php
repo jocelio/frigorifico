@@ -42,7 +42,9 @@
                             <td>R$ {{$operation->getFormattedValue()}}</td>
                             <td>{{$operation->type == 0? 'VENDA':'PAGAMENTO'}}</td>
                             <td>R$ {{$operation->getFormattedAcc()}}</td>
-                            <td> Imprimir </td>
+                            <td> <a href="/operation/{{$cliente->id}}/print/{{$operation->id}}"> Imprimir
+                                    <img src="{{ asset('/images/level-down.svg') }}" style="width: 10px">
+                                </a> </td>
                         </tr>
                         @endforeach
                         </tbody>
