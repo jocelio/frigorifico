@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="10f90170-3f9a-42df-ad3c-c1515443171f" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="10f90170-3f9a-42df-ad3c-c1515443171f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OperationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OperationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/operations/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/operations/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
+>>>>>>> 538ca49387ac6d2147e616ff347865fe0b241b24
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +58,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
               <caret line="45" column="100" selection-start-line="45" selection-start-column="100" selection-end-line="45" selection-end-column="100" />
+<<<<<<< HEAD
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="36" column="94" selection-start-line="36" selection-start-column="82" selection-end-line="36" selection-end-column="94" />
+=======
+>>>>>>> 538ca49387ac6d2147e616ff347865fe0b241b24
             </state>
           </provider>
         </entry>
@@ -61,7 +83,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Client.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="137">
@@ -358,12 +380,20 @@
       <workItem from="1557448908517" duration="1672000" />
       <workItem from="1557450748912" duration="1331000" />
       <workItem from="1557599021249" duration="1656000" />
+<<<<<<< HEAD
       <workItem from="1557600858816" duration="341000" />
+=======
+      <workItem from="1557600858816" duration="154000" />
+>>>>>>> 538ca49387ac6d2147e616ff347865fe0b241b24
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="51604000" />
+=======
+    <option name="totallyTimeSpent" value="51417000" />
+>>>>>>> 538ca49387ac6d2147e616ff347865fe0b241b24
   </component>
   <component name="ToolWindowManager">
     <frame x="32" y="23" width="1400" height="808" extended-state="0" />
@@ -375,7 +405,11 @@
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32988167" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Run" order="2" weight="0.43994415" />
+=======
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13407822" />
+>>>>>>> 538ca49387ac6d2147e616ff347865fe0b241b24
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -660,6 +694,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="45" column="100" selection-start-line="45" selection-start-column="100" selection-end-line="45" selection-end-column="100" />
+<<<<<<< HEAD
         </state>
       </provider>
     </entry>
@@ -679,10 +714,22 @@
           <caret line="114" column="65" selection-start-line="114" selection-start-column="65" selection-end-line="114" selection-end-column="65" />
           <folding>
             <element signature="e#23#41#0#PHP" expanded="true" />
+=======
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/OperationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="82" column="25" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
+          <folding>
+            <element signature="e#40#55#0#PHP" expanded="true" />
+>>>>>>> 538ca49387ac6d2147e616ff347865fe0b241b24
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/public/EPSON">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -690,6 +737,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/Client.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="114" column="65" selection-start-line="114" selection-start-column="65" selection-end-line="114" selection-end-column="65" />
+          <folding>
+            <element signature="e#23#41#0#PHP" expanded="true" />
+          </folding>
+>>>>>>> 538ca49387ac6d2147e616ff347865fe0b241b24
         </state>
       </provider>
     </entry>

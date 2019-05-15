@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
 use Mike42\Escpos\PrintConnectors\CupsPrintConnector;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+use Mike42\Escpos\PrintConnectors\FilePrintConnector;
 use Mike42\Escpos\Printer;
 
 class OperationController extends Controller
@@ -29,7 +31,12 @@ class OperationController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $connector = new CupsPrintConnector($this->printerName);
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+          $connector = new WindowsPrintConnector($this->printerName);
+        } else {
+          $connector = new CupsPrintConnector($this->printerName);
+        }
+
         $this->printer = new Printer($connector);
     }
 
