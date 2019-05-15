@@ -14,6 +14,17 @@
                 </div>
 
                 <div class="card-body">
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     @if (session('seccess_message'))
                         <div class="alert alert-success" role="alert">
                             {{ session('seccess_message') }}
@@ -24,17 +35,17 @@
                         <div class="row">
                             <div class="col">
                                 {!! Form::label('client', 'Cliente') !!}
-                                {!! Form::select('client_id', $clientes, null, ['class' => 'form-control select2','autofocus', 'placeholder' => 'Selecione o Cliente']) !!}
+                                {!! Form::select('client_id', $clientes, null, ['class' => 'form-control select2','autofocus', 'required'=>'true', 'placeholder' => 'Selecione o Cliente']) !!}
                             </div>
                             <div class="col">
                                 {!! Form::label('type', 'Operação') !!}
-                                {!! Form::select('type', $types, null, ['class' => 'form-control']) !!}
+                                {!! Form::select('type', $types, null, ['class' => 'form-control', 'required'=>'true']) !!}
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col">
                                 {!! Form::label('date', 'Data') !!}
-                                {!! Form::input('text', 'date', \Carbon\Carbon::now()->format('d/m/Y'), ['class' => 'form-control datepicker'])  !!}
+                                {!! Form::input('text', 'date', \Carbon\Carbon::now()->format('d/m/Y'), ['class' => 'form-control datepicker', 'required'=>'true'])  !!}
                             </div>
                             <div class="col">
                                 {!! Form::label('value', 'Valor') !!}

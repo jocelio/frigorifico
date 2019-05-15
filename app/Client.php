@@ -91,10 +91,10 @@ class Client extends Model
     public static function printHeader($printer){
         $printer -> setTextSize(2, 1);
         $printer ->setJustification(Printer::JUSTIFY_CENTER);
-        $printer->text("Wostin das Carnes");
+        $printer->text("Wostin da Carne");
         $printer -> setTextSize(1, 1);
         $printer->text("\n");
-        $printer->text("(85) 988387818 - (85) 987621156");
+        $printer->text("(85) 987385952 - (85) 987621156");
         $printer->text("\n");
         $printer->text(Carbon::now()->format('d/m/Y H:i:s'));
         $printer->text("\n");

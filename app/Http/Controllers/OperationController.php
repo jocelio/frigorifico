@@ -112,6 +112,13 @@ class OperationController extends Controller
 
     public function insert(Request $request){
 
+        $request->validate([
+            'value' => 'required',
+            'date' => 'required',
+            'type' => 'required',
+            'client_id' => 'required',
+        ]);
+
         $operation = new Operation();
 
         $fields = $request->all();
