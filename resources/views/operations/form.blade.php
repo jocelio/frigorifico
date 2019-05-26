@@ -31,7 +31,7 @@
                         </div>
                     @endif
 
-                    {!! Form::open(['url' => 'operation/insert']) !!}
+                    {!! Form::open(['url' => 'operation/insert', 'class'=>'form-prevent-multiple-submit' ]) !!}
                         <div class="row">
                             <div class="col">
                                 {!! Form::label('client', 'Cliente') !!}
@@ -59,10 +59,12 @@
                                 {!! Form::checkbox('print', true, true) !!}
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col mt-4">
-                                {!! Form::submit('Enviar', ['class' => 'btn btn-primary']) !!}
+                            <button type="submit" class="btn btn-primary button-prevent-multiple-submit">
+                                <i class="spinner fa fa-spinner fa-spin btn text-white"></i>
+                                Enviar
+                            </button>
                             </div>
                         </div>
 
