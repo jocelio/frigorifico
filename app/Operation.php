@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Operation extends Model
 {
     protected $fillable = [
-        'client_id', 'type', 'date', 'value','user_id'
+        'client_id', 'type', 'date', 'value','user_id', 'comment'
     ];
 
     public function client()

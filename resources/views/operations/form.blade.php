@@ -52,11 +52,14 @@
                                 {!! Form::input('text', 'value', null, ['class' => 'form-control money', 'required'=>'true', 'placeholder' => 'Valor'])  !!}
                             </div>
                         </div>
-
                         <div class="row mt-2">
-                            <div class="col">
+                            <div class="col mt-4">
                                 {!! Form::label('print', 'Imprimir') !!}
                                 {!! Form::checkbox('print', true, true) !!}
+                            </div>
+                            <div class="col-md-6">
+                                {!! Form::label('comment', 'Comentários') !!}
+                                {!! Form::textarea('comment', null, ['class' => 'form-control', 'placeholder' => 'Comentários', 'rows' => 3, 'cols' => 54, ])  !!}
                             </div>
                         </div>
                         <div class="row">
