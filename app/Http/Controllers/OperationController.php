@@ -87,6 +87,7 @@ class OperationController extends Controller
             $cliente = Client::findOrFail($clientId);
         }
 
+
         $cliente->printHistory($this->printer, $operationId == null);
 
         return Redirect::to('/operation/'.$clientId.'/historico');
