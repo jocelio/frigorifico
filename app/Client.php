@@ -69,11 +69,14 @@ class Client extends Model
 
     public function getLastPurchaseInDays(){
         $operations = collect($this->operations);
-        return $operations->filter(function ($operation) {
-            return $operation->type == '0';
-        })->sortBy('date')->map(function ($operation) {
+        $last = $operations->filter(function ($operation) {
+            return $operation->type == '1';
+        })->sortBy('date')
+            ->map(function ($operation) {
             return $operation->getElapsedDays();
-        })->first();
+        })->last();
+
+        return !is_null($last)? $last: null;
     }
 
     public function printTest($printer, $printerName){

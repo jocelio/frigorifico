@@ -52,7 +52,8 @@ class OperationController extends Controller
 
         //calculate last payment as filter
         $alerts = collect($clientesAlerts)->filter(function ($client) {
-            return $client->getBalance() < 0 && $client->getLastPurchaseInDays() > $this->daysForAlert;
+            return $client->getBalance() < 0
+                && (is_null($client->getLastPurchaseInDays()) || $client->getLastPurchaseInDays() > $this->daysForAlert);
         })->count();
 
         $clientes = collect($clientesAlerts)->sortBy('nome')->mapWithKeys(function ($item) {
@@ -70,7 +71,8 @@ class OperationController extends Controller
 
         //calculate last payment as filter
         $alerts = collect($clientesAlerts)->filter(function ($client) {
-            return $client->getBalance() < 0 && $client->getLastPurchaseInDays() > $this->daysForAlert;
+            return $client->getBalance() < 0
+                && (is_null($client->getLastPurchaseInDays()) || $client->getLastPurchaseInDays() > $this->daysForAlert);
         });
 
         $clientes = Client::pluck('nome', 'id');
