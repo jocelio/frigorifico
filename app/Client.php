@@ -105,13 +105,16 @@ class Client extends Model
     public function printHistory($printer, $printTotal = true){
 
         $this->printHeader($printer);
-
         $clienteFull = Client::findOrFail($this->id);
 
         $printer ->setJustification(Printer::JUSTIFY_LEFT);
         $printer ->setColor(Printer::COLOR_2);
-
         $separator = " - ";
+
+        $printer->text("CLIENTE: ".$clienteFull->nome);
+        $printer->text("\n");
+        $printer->text("________________________________________________");
+        $printer->text("\n");
 
         $printer->text("VALOR  - TIPO -    DATA    - SALDO   - INFO\n");
 
